@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AP Physics 2 | Tangible Learning</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/stylecourses.css" />
+    <style>
+        /* ENHANCED COURSE BANNER - REPLACES OLD BANNER */
+        .course-banner {
+            position: relative;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 25%, #7c3aed 50%, #c026d3 75%, #db2777 100%);
+            color: white;
+            padding: 100px 0 80px;
+            overflow: hidden;
+        }
+        
+        .course-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            opacity: 0.4;
+        }
+        
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        
+        .floating-icon {
+            position: absolute;
+            opacity: 0.12;
+            animation: float 8s ease-in-out infinite;
+            font-size: 3rem;
+            color: white;
+        }
+        
+        .floating-icon:nth-child(1) {
+            top: 15%;
+            left: 8%;
+            animation-delay: 0s;
+        }
+        
+        .floating-icon:nth-child(2) {
+            top: 25%;
+            right: 12%;
+            animation-delay: 3s;
+        }
+        
+        .floating-icon:nth-child(3) {
+            top: 60%;
+            right: 25%;
+            animation-delay: 6s;
+        }
+        
+        .floating-icon:nth-child(4) {
+            bottom: 25%;
+            left: 15%;
+            animation-delay: 2s;
+        }
+        
+        .floating-icon:nth-child(5) {
+            top: 45%;
+            left: 45%;
+            animation-delay: 4s;
+            font-size: 2.5rem;
+        }
+        
+        .floating-icon:nth-child(6) {
+            top: 35%;
+            left: 75%;
+            animation-delay: 5s;
+            font-size: 2.8rem;
+        }
+        
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg); 
+                opacity: 0.12;
+            }
+            33% { 
+                transform: translateY(-25px) rotate(8deg); 
+                opacity: 0.18;
+            }
+            66% { 
+                transform: translateY(15px) rotate(-8deg); 
+                opacity: 0.15;
+            }
+        }
+        
+        .banner-content {
+            text-align: center;
+            position: relative;
+        }
+        
+        .course-title {
+            font-size: 3.2rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            background: linear-gradient(45deg, #ffffff 0%, #e0e7ff 50%, #c7d2fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            line-height: 1.1;
+        }
+        
+        .course-subtitle {
+            font-size: 1.25rem;
+            opacity: 0.92;
+            margin-bottom: 35px;
+            line-height: 1.6;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .banner-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: particleFloat 12s linear infinite;
+        }
+        
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 20%; animation-delay: 2s; }
+        .particle:nth-child(3) { left: 30%; animation-delay: 4s; }
+        .particle:nth-child(4) { left: 40%; animation-delay: 6s; }
+        .particle:nth-child(5) { left: 50%; animation-delay: 8s; }
+        .particle:nth-child(6) { left: 60%; animation-delay: 10s; }
+        .particle:nth-child(7) { left: 70%; animation-delay: 1s; }
+        .particle:nth-child(8) { left: 80%; animation-delay: 3s; }
+        .particle:nth-child(9) { left: 90%; animation-delay: 5s; }
+        
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) scale(1);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Add a subtle glow effect */
+        .course-banner::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: linear-gradient(to top, rgba(248, 249, 250, 0.1), transparent);
+            pointer-events: none;
+        }
+        
+        /* ORIGINAL STYLES CONTINUE BELOW - UNCHANGED */
+        .course-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .course-info {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            margin-top: -40px;
+            margin-bottom: 60px;
+            padding: 40px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .course-meta div {
+            text-align: center;
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .course-meta h4 {
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 5px;
+        }
+        
+        .course-meta p {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .course-description h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .course-description p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .section-title {
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 10px;
+            margin: 40px 0 20px;
+            color: var(--primary);
+        }
+        
+        .curriculum-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .curriculum-item {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            border-left: 4px solid var(--primary-light);
+            margin-bottom: 15px;
+            background-color: #fafafa;
+        }
+        
+        .curriculum-item:last-child {
+            border-bottom: none;
+        }
+        
+        .curriculum-item h4 {
+            margin: 0 0 10px;
+            color: var(--primary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .unit-duration {
+            background-color: var(--primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: normal;
+        }
+        
+        .curriculum-item p {
+            margin: 0;
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        .curriculum-item ul {
+            margin: 10px 0 0 20px;
+            color: #555;
+        }
+        
+        .curriculum-item li {
+            margin-bottom: 5px;
+        }
+        
+        .pricing-box {
+            background-color: var(--secondary-light);
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .price {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 15px 0;
+        }
+        
+        .price-description {
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .benefits-list {
+            margin: 30px 0;
+            padding-left: 20px;
+        }
+        
+        .benefits-list li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        .benefits-list li::before {
+            content: "✓";
+            color: var(--primary);
+            position: absolute;
+            left: -15px;
+            font-weight: bold;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .feature-box {
+            background-color: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .feature-box h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .testimonial {
+            margin: 40px 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-left: 4px solid var(--primary);
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            font-style: normal;
+            font-weight: 600;
+            text-align: right;
+            margin-top: 10px;
+        }
+        
+        .exam-info {
+            background-color: #e8f4fd;
+            border: 1px solid #b3d9f2;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .exam-info h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .prerequisite-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .prerequisite-box h4 {
+            color: #d68910;
+            margin-bottom: 10px;
+        }
+        
+        /* Enhanced Banner Responsive adjustments */
+        @media (max-width: 768px) {
+            .course-banner {
+                padding: 80px 0 60px;
+            }
+            
+            .course-title {
+                font-size: 2.5rem;
+            }
+            
+            .course-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .floating-icon {
+                font-size: 2rem;
+            }
+            
+            .floating-icon:nth-child(5) {
+                font-size: 1.8rem;
+            }
+            
+            .floating-icon:nth-child(6) {
+                font-size: 1.9rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .course-title {
+                font-size: 2rem;
+            }
+            
+            .course-subtitle {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+    <body style="background-color: #f8f9fa;">
+    <header>
+        <div class="container">
+            <nav>
+                <a href="/" class="logo">
+                    <img src="/images/logo.png" alt="Tangible Learning Logo" class="logo-image">
+                </a>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/Courses/">Courses</a></li>
+                    <li><a href="/About/">About</a></li>
+                    <li><a href="/Pricing/">Pricing</a></li>
+                    <li><a href="/Testimonials/">Testimonials</a></li>
+                    <li><a href="/Contact/">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- ENHANCED BANNER SECTION -->
+    <section class="course-banner">
+        <!-- Floating physics-related icons for AP Physics 2 -->
+        <div class="floating-elements">
+            <div class="floating-icon">🔬</div>
+            <div class="floating-icon">🧲</div>
+            <div class="floating-icon">💡</div>
+            <div class="floating-icon">🌊</div>
+            <div class="floating-icon">⚛️</div>
+            <div class="floating-icon">🔥</div>
+        </div>
+        
+        <!-- Floating particles for extra visual appeal -->
+        <div class="banner-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        
+        <div class="course-container">
+            <div class="banner-content">
+                <h1 class="course-title">AP Physics 2: Algebra-Based</h1>
+                
+                <p class="course-subtitle">
+                    Master advanced physics concepts including fluids, thermodynamics, electricity, magnetism, optics, and nuclear physics with comprehensive, personalized tutoring
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- REST OF ORIGINAL CONTENT UNCHANGED -->
+    <div class="course-container">
+        <div class="course-info">
+            <div class="course-meta">
+                <div>
+                    <h4>Course Level</h4>
+                    <p>AP Level</p>
+                </div>
+                <div>
+                    <h4>Total Duration</h4>
+                    <p>65 Hours</p>
+                </div>
+                <div>
+                    <h4>Format</h4>
+                    <p>Online 1-on-1</p>
+                </div>
+                <div>
+                    <h4>Prerequisites</h4>
+                    <p>AP Physics 1 or equivalent</p>
+                </div>
+            </div>
+            
+            <div class="course-description">
+                <h2>Course Overview</h2>
+                <p>Our AP Physics 2 course is designed to build upon the foundations established in AP Physics 1, diving deeper into advanced algebra-based physics concepts. This comprehensive program covers the remaining four Big Ideas from the College Board curriculum, including fluid mechanics, thermodynamics, electricity and magnetism, waves and optics, and quantum, atomic, and nuclear physics.</p>
+                
+                <p>AP Physics 2 is equivalent to a second-semester college course in algebra-based physics. The course emphasizes conceptual understanding, mathematical reasoning, and the application of physics principles to solve complex, real-world problems. Students will develop advanced analytical skills and gain exposure to modern physics concepts that form the foundation for further study in physics, engineering, and related fields.</p>
+                
+                <div class="prerequisite-box">
+                    <h4>Important Prerequisites</h4>
+                    <p><strong>Required:</strong> Successful completion of AP Physics 1 or equivalent first-year physics course</p>
+                    <p><strong>Mathematics:</strong> Strong foundation in algebra, trigonometry, and basic logarithms</p>
+                    <p><strong>Recommended:</strong> Some exposure to exponential functions and basic calculus concepts (though not required)</p>
+                </div>
+                
+                <div class="exam-info">
+                    <h4>AP Exam Information</h4>
+                    <p><strong>Exam Date:</strong> May 2026 | <strong>Duration:</strong> 3 hours | <strong>Format:</strong> Multiple Choice (50%) + Free Response (50%)</p>
+                    <p>The exam tests deep conceptual understanding and the ability to apply physics principles across multiple contexts, with emphasis on mathematical reasoning and laboratory skills.</p>
+                </div>
+                
+                <h3 class="section-title">What Makes Our Course Special</h3>
+                <div class="features-grid">
+                    <div class="feature-box">
+                        <div class="feature-icon">📹</div>
+                        <h4>Recorded Sessions</h4>
+                        <p>Access to all live session recordings for review and reinforcement at your own pace</p>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">💬</div>
+                        <h4>WhatsApp Support</h4>
+                        <p>24/7 support for quick questions and clarifications outside of scheduled sessions</p>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">📊</div>
+                        <h4>Proctored Tests</h4>
+                        <p>Regular assessments under exam conditions to track progress and build exam confidence</p>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">🔬</div>
+                        <h4>Virtual Labs</h4>
+                        <p>Interactive simulations and virtual experiments to reinforce theoretical concepts</p>
+                    </div>
+                </div>
+                
+                <h3 class="section-title">What You'll Learn</h3>
+                <ul class="benefits-list">
+                    <li>Master advanced physics concepts in fluid mechanics, thermodynamics, and modern physics</li>
+                    <li>Develop sophisticated problem-solving skills for complex, multi-step physics problems</li>
+                    <li>Understand the principles of electricity and magnetism, including electromagnetic induction</li>
+                    <li>Explore wave phenomena, including interference, diffraction, and polarization</li>
+                    <li>Gain insight into quantum mechanics, atomic structure, and nuclear physics</li>
+                    <li>Practice advanced laboratory techniques and data analysis methods</li>
+                    <li>Build strong mathematical modeling skills using algebra and trigonometry</li>
+                    <li>Develop exam strategies specifically tailored to AP Physics 2's unique format</li>
+                </ul>
+                
+                <h3 class="section-title">Detailed Course Curriculum</h3>
+                <ul class="curriculum-list">
+                    <li class="curriculum-item">
+                        <h4>Unit 1: Fluids <span class="unit-duration">8 hours</span></h4>
+                        <p>Comprehensive study of fluid statics and dynamics, including pressure, buoyancy, and fluid flow.</p>
+                        <ul>
+                            <li>Fluid pressure and Pascal's principle</li>
+                            <li>Buoyancy and Archimedes' principle</li>
+                            <li>Fluid dynamics and Bernoulli's equation</li>
+                            <li>Viscosity and laminar vs. turbulent flow</li>
+                            <li>Applications to real-world fluid systems</li>
+                        </ul>
+                    </li>
+                    <li class="curriculum-item">
+                        <h4>Unit 2: Thermodynamics <span class="unit-duration">10 hours</span></h4>
+                        <p>Heat, temperature, and the laws of thermodynamics with applications to various thermal processes.</p>
+                        <ul>
+                            <li>Temperature, heat, and thermal equilibrium</li>
+                            <li>Specific heat capacity and phase changes</li>
+                            <li>Ideal gas law and kinetic theory</li>
+                            <li>First and second laws of thermodynamics</li>
+                            <li>Heat engines, refrigerators, and entropy</li>
+                        </ul>
+                    </li>
+                    <li class="curriculum-item">
+                        <h4>Unit 3: Electric Force, Field, and Potential <span class="unit-duration">9 hours</span></h4>
+                        <p>Advanced electrostatics including electric field, potential, and capacitance.</p>
+                        <ul>
+                            <li>Coulomb's law and electric field calculations</li>
+                            <li>Electric potential and potential difference</li>
+                            <li>Capacitance and energy storage in capacitors</li>
+                            <li>Dielectrics and their effects on capacitance</li>
+                            <li>Electric field and potential in various geometries</li>
+                        </ul>
+                    </li>
+                    <li class="curriculum-item">
+                        <h4>Unit 4: Electric Circuits <span class="unit-duration">8 hours</span></h4>
+                        <p>Advanced circuit analysis including RC circuits and complex network analysis.</p>
+                        <ul>
+                            <li>Kirchhoff's laws and circuit analysis techniques</li>
+                            <li>RC circuits: charging and discharging</li>
+                            <li>Complex resistor-capacitor networks</li>
+                            <li>Electrical power and energy in circuits</li>
+                            <li>Measuring instruments and circuit applications</li>
+                        </ul>
+                    </li>
+                    <li class="curriculum-item">
+                        <h4>Unit 5: Magnetism and Electromagnetic Induction <span class="unit-duration">10 hours</span></h4>
+                        <p>Magnetic fields, forces, and electromagnetic induction phenomena.</p>
+                        <ul>
+                            <li>Magnetic fields and forces on moving charges</li>
+                            <li>Magnetic forces on current-carrying conductors</li>
+                            <li>Sources of magnetic fields: straight wires, loops, solenoids</li>
+                            <li>Faraday's law and electromagnetic induction</li>
+                            <li>Lenz's law and motional EMF</li>
+                        </ul>
+                    </li>
+                    <li class="curriculum-item">
+                        <h4>Unit 6: Geometric and Physical Optics <span class="unit-duration">8 hours</span></h4>
+                        <p>Light behavior including reflection, refraction, interference, and diffraction.</p>
+                        <ul>
+                            <li>Reflection and refraction of light</li>
+                            <li>Total internal reflection and optical fibers</li>
+                            <li>Lens and mirror optics</li>
+                            <li>Wave interference and Young's double-slit experiment</li>
+                            <li>Diffraction gratings and polarization</li>
+                        </ul>
+                    </li>
+                    <li class="curriculum-item">
+                        <h4>Unit 7: Quantum, Atomic, and Nuclear Physics <span class="unit-duration">8 hours</span></h4>
+                        <p>Introduction to modern physics concepts including quantum mechanics and nuclear physics.</p>
+                        <ul>
+                            <li>Photons and the photoelectric effect</li>
+                            <li>Energy levels and electron transitions in atoms</li>
+                            <li>Wave-particle duality and de Broglie wavelength</li>
+                            <li>Nuclear structure and radioactive decay</li>
+                            <li>Mass-energy equivalence and nuclear reactions</li>
+                        </ul>
+                    </li>
+                    <li class="curriculum-item">
+                        <h4>Unit 8: Review and Exam Preparation <span class="unit-duration">4 hours</span></h4>
+                        <p>Comprehensive review, exam strategies, and final preparation for the AP Physics 2 exam.</p>
+                        <ul>
+                            <li>Comprehensive review of all major concepts</li>
+                            <li>Practice with released AP exam questions</li>
+                            <li>Time management and exam strategy techniques</li>
+                            <li>Final assessment and performance analysis</li>
+                            <li>Last-minute clarifications and confidence building</li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <div class="pricing-box">
+                    <h3>Course Investment</h3>
+                    <div class="price">$1,950</div>
+                    <p class="price-description">Complete 65-hour AP Physics 2 course with all materials and resources included</p>
+                    <p style="font-size: 0.9rem; margin-bottom: 20px;">
+                        <strong>Payment Options:</strong> Full payment or 3 monthly installments of $650<br>
+                        <strong>Includes:</strong> All sessions, recorded materials, practice tests, WhatsApp support, virtual lab access, and comprehensive exam prep resources
+                    </p>
+                    <a href="/Contact/" class="btn">Enroll Now</a>
+                </div>
+                
+                <h3 class="section-title">Student Success Story</h3>
+                <div class="testimonial">
+                    <p>"AP Physics 2 seemed incredibly daunting at first, especially the electricity and magnetism sections. But the systematic approach and the way complex concepts were broken down made everything click. The virtual labs were particularly helpful for understanding electromagnetic induction. The constant support through WhatsApp meant I never felt stuck. I achieved a 5 on my AP Physics 2 exam and felt well-prepared for my engineering coursework!"</p>
+                    <p class="testimonial-author">— Michael T., American International School of Budapest</p>
+                </div>
+                
+                <h3 class="section-title">Ready to Master AP Physics 2?</h3>
+                <p>Take your physics understanding to the next level with our comprehensive AP Physics 2 program. This course will prepare you not only for exam success but also for advanced studies in physics, engineering, and related STEM fields. Our personalized approach ensures that you master both the conceptual foundations and problem-solving techniques needed for success.</p>
+                
+                <p>Whether you're planning to pursue engineering, physics, or any STEM field, AP Physics 2 provides essential knowledge and analytical skills that will serve you throughout your academic and professional career.</p>
+                
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="/Contact/" class="btn" style="margin-right: 15px;">Book a Free Consultation</a>
+                    <a href="/Courses/" class="btn" style="background-color: #6c757d;">View All Courses</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Tangible Learning. All Rights Reserved.</p>
+            <ul class="footer-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/Courses/">Courses</a></li>
+                <li><a href="/About/">About</a></li>
+                <li><a href="/Pricing/">Pricing</a></li>
+                <li><a href="/Contact/">Contact</a></li>
+                <li><a href="/Privacy/">Privacy Policy</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>
