@@ -30,7 +30,7 @@
         header {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
-            padding: 2rem 0;
+            padding: 1rem 0; /* Reduced header padding */
             text-align: center;
         }
         
@@ -58,9 +58,9 @@
         }
         
         .logo-image {
-            height: 50px;
+            height: 120px; /* Fixed to match courses page */
             width: auto;
-            margin-right: 10px;
+            margin-right: 15px;
         }
         
         .nav-links {
@@ -89,10 +89,10 @@
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 4rem 2rem;
+            padding: 1.8rem 3rem; /* Reduced vertical padding */
             border-radius: 20px;
-            margin: 3rem auto;
-            max-width: 900px;
+            margin: 1.5rem auto; /* Reduced vertical margin */
+            max-width: 1200px; /* Increased width */
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             text-align: center;
             position: relative;
@@ -111,21 +111,21 @@
         }
 
         .hero h1 {
-            font-size: 3rem;
+            font-size: 2.5rem; /* Reduced font size */
             font-weight: 700;
             color: white;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
+            margin-bottom: 0.8rem; /* Reduced margin */
+            line-height: 1.1;
         }
 
         .hero p {
-            font-size: 1.3rem;
+            font-size: 1.1rem; /* Reduced font size */
             color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 2.5rem;
-            max-width: 600px;
+            margin-bottom: 1.2rem; /* Reduced margin */
+            max-width: 750px; /* Increased max width */
             margin-left: auto;
             margin-right: auto;
-            line-height: 1.6;
+            line-height: 1.4;
         }
 
         .hero .btn {
@@ -148,13 +148,13 @@
             box-shadow: 0 12px 25px rgba(255, 0, 110, 0.4);
         }
 
-        /* Add some visual elements */
+        /* Hero Statistics */
         .hero-stats {
             display: flex;
             justify-content: center;
-            gap: 3rem;
-            margin-top: 3rem;
-            padding-top: 2rem;
+            gap: 5rem; /* Increased gap */
+            margin-top: 1.5rem; /* Reduced top margin */
+            padding-top: 1.2rem; /* Reduced top padding */
             border-top: 1px solid rgba(255, 255, 255, 0.2);
         }
 
@@ -298,25 +298,25 @@
             }
             
             .hero {
-                padding: 3rem 1.5rem;
-                margin: 2rem auto;
+                padding: 1.5rem 1.5rem;
+                margin: 1rem auto;
             }
             
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 1.8rem;
             }
             
             .hero p {
-                font-size: 1.1rem;
+                font-size: 0.95rem;
             }
 
             .hero-stats {
                 flex-direction: column;
-                gap: 1.5rem;
+                gap: 0.8rem;
             }
 
             .logo-image {
-                height: 40px;
+                height: 60px; /* Smaller on mobile */
             }
         }
     </style>
