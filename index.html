@@ -4,28 +4,358 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tangible Learning | Expert Physics & Math Tutoring</title>
-<link rel="stylesheet" href="css/styles.css" />
+    <style>
+        :root {
+            --primary: #3a86ff;
+            --secondary: #8338ec;
+            --accent: #ff006e;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #38b000;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-image {
+            height: 50px;
+            width: auto;
+            margin-right: 10px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Enhanced Hero Section */
+        .hero {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            margin: 3rem auto;
+            max-width: 900px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            border-radius: 20px 20px 0 0;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .hero .btn {
+            background: linear-gradient(135deg, var(--accent), #ff4081);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: inline-block;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(255, 0, 110, 0.3);
+        }
+
+        .hero .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(255, 0, 110, 0.4);
+        }
+
+        /* Add some visual elements */
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 0.25rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #d90057;
+        }
+        
+        section {
+            padding: 4rem 0;
+        }
+        
+        section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary);
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+        }
+        
+        .card h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .course-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .features {
+            background-color: #f0f4ff;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .cta {
+            background-color: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+        }
+        
+        .cta h2 {
+            color: white;
+        }
+        
+        .cta-btn {
+            background-color: white;
+            color: var(--secondary);
+            margin-top: 1.5rem;
+        }
+        
+        .cta-btn:hover {
+            background-color: #f0f0f0;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 1rem 0;
+        }
+        
+        .footer-links li {
+            margin: 0 1rem;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                padding: 3rem 1.5rem;
+                margin: 2rem auto;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .logo-image {
+                height: 40px;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
         <div class="container">
             <nav>
-                <a href="./" class="logo">
-    <img src="images/logo.png" alt="Tangible Learning Logo" class="logo-image">
-</a>
+                <a href="/" class="logo">
+                    <img src="images/logo.png" alt="Tangible Learning Logo" class="logo-image">
+                </a>
                 <ul class="nav-links">
-                    <li><a href="./">Home</a></li>
-                    <li><a href="./courses.html">Courses</a></li>
-                    <li><a href="./About/">About</a></li>
-                    <li><a href="./Testimonials/">Testimonials</a></li>
-                    <li><a href="./Contact/">Contact</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/Courses/">Courses</a></li>
+                    <li><a href="/About/">About</a></li>
+                    <li><a href="/Testimonials/">Testimonials</a></li>
+                    <li><a href="/Contact/">Contact</a></li>
                 </ul>
             </nav>
             
             <div class="hero">
                 <h1>Transform Your Understanding of Physics & Mathematics</h1>
                 <p>Specialized online tutoring for AP and IB students looking to master complex concepts and achieve exceptional exam results.</p>
-                <a href="./Contact/" class="btn">Book a Free Consultation</a>
+                <a href="/Contact/" class="btn">Book a Free Consultation</a>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">95%</span>
+                        <span class="stat-label">Success Rate</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Students Helped</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">5★</span>
+                        <span class="stat-label">Average Rating</span>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
@@ -39,7 +369,7 @@
                         <div class="course-icon">📊</div>
                         <h3>AP Subjects</h3>
                         <p>Comprehensive tutoring for AP Physics and Maths Subjects. Master complex concepts and excel in your exams</p>
-                        <a href="./courses" style="color: var(--primary); font-weight: 600; display: inline-block; margin-top: 1rem;">Learn More →</a>
+                        <a href="/Courses/" style="color: var(--primary); font-weight: 600; display: inline-block; margin-top: 1rem;">Learn More →</a>
                     </div>
                 </div>
                 
@@ -48,7 +378,7 @@
                         <div class="course-icon">🔬</div>
                         <h3>IBDP</h3>
                         <p>Specialized tutoring for IB Physics and Maths. Comprehensive coverage of all syllabus topics with targeted exam preparation strategies.</p>
-                        <a href="./courses" style="color: var(--primary); font-weight: 600; display: inline-block; margin-top: 1rem;">Learn More →</a>
+                        <a href="/Courses/" style="color: var(--primary); font-weight: 600; display: inline-block; margin-top: 1rem;">Learn More →</a>
                     </div>
                 </div>
                 
@@ -56,8 +386,8 @@
                     <div class="card-content">
                         <div class="course-icon">📈</div>
                         <h3>AS and A levels</h3>
-                        <p>Expert tutoring for AS and A level Physisc and Maths. Personalized guidance to build strong foundations and problem-solving skills.</p>
-                        <a href="./courses" style="color: var(--primary); font-weight: 600; display: inline-block; margin-top: 1rem;">Learn More →</a>
+                        <p>Expert tutoring for AS and A level Physics and Maths. Personalized guidance to build strong foundations and problem-solving skills.</p>
+                        <a href="/Courses/" style="color: var(--primary); font-weight: 600; display: inline-block; margin-top: 1rem;">Learn More →</a>
                     </div>
                 </div>
             </div>
@@ -107,11 +437,11 @@
         <div class="container">
             <p>&copy; 2025 Tangible Learning. All Rights Reserved.</p>
             <ul class="footer-links">
-                <li><a href="./">Home</a></li>
-                <li><a href="./courses.html">Courses</a></li>
-                <li><a href="./about.html">About</a></li>
-                <li><a href="./contact.html">Contact</a></li>
-                <li><a href="./privacy.html">Privacy Policy</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/Courses/">Courses</a></li>
+                <li><a href="/About/">About</a></li>
+                <li><a href="/Contact/">Contact</a></li>
+                <li><a href="/Privacy/">Privacy Policy</a></li>
             </ul>
         </div>
     </footer>
