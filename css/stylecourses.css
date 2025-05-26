@@ -77,7 +77,7 @@
 .course-btn {
     display: inline-block;
     padding: 0.6rem 1.2rem;
-    background-color: var(--primary);
+    background-color: var(--secondary);
     color: white;
     text-decoration: none;
     border-radius: 4px;
@@ -87,7 +87,7 @@
 }
 
 .course-btn:hover {
-    background-color: var(--primary-dark);
+    background-color: #6b2bc7; /* Slightly darker purple on hover */
 }
 
 /* Fix for AP courses (first category) */
