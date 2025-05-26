@@ -41,6 +41,7 @@ nav {
     padding: 1rem 0;
 }
 
+/* Logo styling - Ensure consistency across all pages */
 .logo {
     font-size: 2rem;
     font-weight: bold;
@@ -51,7 +52,7 @@ nav {
 }
 
 .logo-image {
-    height: 120px; /* Significantly increased logo size */
+    height: 120px !important; /* Added !important to override any conflicting styles */
     width: auto;
     margin-right: 15px;
 }
@@ -310,6 +311,6 @@ footer {
     }
     
     .logo-image {
-        height: 60px; /* Larger logo on mobile too */
+        height: 60px !important; /* Ensure mobile logo size is consistent */
     }
 }
