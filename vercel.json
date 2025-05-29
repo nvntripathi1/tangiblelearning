@@ -11,23 +11,23 @@
     },
     {
       "source": "/Contact",
-      "destination": "/Contact/index.html"
+      "destination": "/contact.html"
     },
     {
       "source": "/About",
-      "destination": "/About/index.html"
+      "destination": "/about.html"
     },
     {
       "source": "/Courses",
-      "destination": "/Courses/index.html"
+      "destination": "/courses.html"
     },
     {
       "source": "/Testimonials",
-      "destination": "/Testimonials/index.html"
+      "destination": "/testimonials.html"
     },
     {
       "source": "/admin",
-      "destination": "/admin/index.html"
+      "destination": "/admin.html"
     }
   ]
 }
