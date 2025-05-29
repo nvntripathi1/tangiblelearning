@@ -1,0 +1,33 @@
+{
+  "functions": {
+    "app.js": {
+      "runtime": "@vercel/node"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/Contact",
+      "destination": "/Contact/index.html"
+    },
+    {
+      "source": "/About",
+      "destination": "/About/index.html"
+    },
+    {
+      "source": "/Courses",
+      "destination": "/Courses/index.html"
+    },
+    {
+      "source": "/Testimonials",
+      "destination": "/Testimonials/index.html"
+    },
+    {
+      "source": "/admin",
+      "destination": "/admin/index.html"
+    }
+  ]
+}
