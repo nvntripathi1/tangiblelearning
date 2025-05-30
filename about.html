@@ -189,13 +189,14 @@
             padding: 2rem 0;
         }
         
+        /* FIXED: Changed from bottom: 0 to height calculation */
         .timeline::after {
             content: '';
             position: absolute;
             width: 6px;
             background-color: var(--primary);
             top: 0;
-            bottom: 0;
+            height: calc(100% - 2rem);
             left: 50%;
             margin-left: -3px;
         }
@@ -335,6 +336,7 @@
             
             .timeline::after {
                 left: 31px;
+                height: calc(100% - 2rem);
             }
             
             .timeline-item {
@@ -466,6 +468,9 @@
                         <p>Expertise in JEE Physics, Time Management and student mentoring</p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
     
     <section>
         <div class="container">
