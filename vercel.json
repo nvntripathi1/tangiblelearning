@@ -1,19 +1,19 @@
 {
   "rewrites": [
     {
-      "source": "/Contact",
+      "source": "/contact",
       "destination": "/contact.html"
     },
     {
-      "source": "/About", 
+      "source": "/about", 
       "destination": "/about.html"
     },
     {
-      "source": "/Courses",
+      "source": "/courses",
       "destination": "/courses.html"
     },
     {
-      "source": "/Testimonials",
+      "source": "/testimonials",
       "destination": "/testimonials.html"
     },
     {
