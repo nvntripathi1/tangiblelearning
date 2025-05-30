@@ -132,6 +132,38 @@
             font-size: 1.1rem;
         }
         
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
         .qualifications {
             background-color: #f0f4ff;
             padding: 4rem 0;
@@ -297,6 +329,10 @@
                 grid-template-columns: 1fr;
             }
             
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
             .timeline::after {
                 left: 31px;
             }
@@ -343,22 +379,41 @@
         <div class="container">
             <div class="about-grid">
                 <div class="about-image">
-                    <img src="/api/placeholder/400/500" alt="Tutor Profile">
+                    <img src="/api/placeholder/400/500" alt="Naveen Tripathi - Physics and Mathematics Tutor">
                 </div>
                 <div class="about-content">
                     <h2>My Story</h2>
                     <p>
-                        Welcome to Tangible Learning! I'm [Your Name], a passionate educator dedicated to making complex Physics and Mathematics concepts accessible and engaging for students.
+                        Welcome to Tangible Learning! I'm Naveen Tripathi, a passionate physics and mathematics educator with 6 years of dedicated teaching experience, specializing in making complex concepts accessible and engaging for students worldwide.
                     </p>
                     <p>
-                        With over [X years] of teaching experience and a [Your Degree] in [Your Field] from [Your University], I've developed a deep understanding of how students learn difficult scientific and mathematical concepts. My background includes [brief description of your relevant experience].
+                        My journey in education has been incredibly rewarding, having worked with prestigious institutions like AP Guru, Tutopedia, Avanti Learning Centres, and T.I.M.E. (Triumphant Institute of Management Education), as well as online tutoring platforms like TeacherOn.com. Through these experiences, I've developed expertise in both AP and IB curricula, along with advanced understanding of A and AS Level Physics and Maths.
                     </p>
                     <p>
-                        My journey as an educator began when [brief story about how you started teaching]. Since then, I've helped hundreds of students achieve excellent results in AP and IB exams, with many going on to study at prestigious universities worldwide.
+                        What drives me as an educator is witnessing that "aha!" moment when a challenging concept finally clicks for a student. My background spans from intensive one-on-one tutoring to large group instruction, giving me a comprehensive understanding of diverse learning styles and needs.
                     </p>
                     <p>
-                        What sets my tutoring approach apart is my ability to break down complex concepts into understandable pieces while maintaining academic rigor. I believe that every student can excel in physics and mathematics with the right guidance and support.
+                        I believe that physics and mathematics are not just subjects to be memorized, but fascinating ways to understand our world. My approach focuses on building strong conceptual foundations while ensuring students excel in their examinations.
                     </p>
+                </div>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">Years of Teaching Experience</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3000+</div>
+                    <div class="stat-label">Hours of One-on-One Tutoring</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">940+</div>
+                    <div class="stat-label">Hours of Live Group Classes</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1500+</div>
+                    <div class="stat-label">Hours of Offline Batch Teaching</div>
                 </div>
             </div>
         </div>
@@ -366,44 +421,51 @@
     
     <section class="qualifications">
         <div class="container">
-            <h2>Qualifications & Experience</h2>
+            <h2>Professional Experience & Timeline</h2>
             
             <div class="timeline">
                 <div class="timeline-item timeline-left">
                     <div class="timeline-content">
-                        <div class="timeline-year">Education</div>
-                        <h3>[Your Degree]</h3>
-                        <p>[Your University], [Graduation Year]</p>
-                        <p>Specialized in [Your Specialization]</p>
+                        <div class="timeline-year">Jun 2023 - Present</div>
+                        <h3>Online Physics and Maths Tutor</h3>
+                        <p>AP Guru • Full-time (2 years)</p>
+                        <p>Specializing in IBDP, AP and A level Physics and Maths</p>
                     </div>
                 </div>
                 <div class="timeline-item timeline-right">
                     <div class="timeline-content">
-                        <div class="timeline-year">Teaching Experience</div>
-                        <h3>[Previous Position]</h3>
-                        <p>[Institution/School], [Years]</p>
-                        <p>Taught AP Physics and IB Mathematics to over 200 students</p>
+                        <div class="timeline-year">Sep 2020 - Present</div>
+                        <h3>Online Tutor</h3>
+                        <p>TeacherOn.com (Online Tutoring Platform) • Freelance (4 years 9 months)</p>
+                        <p>Expertise in Calculus, Matrices and advanced mathematical concepts</p>
                     </div>
                 </div>
                 <div class="timeline-item timeline-left">
                     <div class="timeline-content">
-                        <div class="timeline-year">Professional Development</div>
-                        <h3>[Relevant Certification]</h3>
-                        <p>[Certification Provider], [Year]</p>
-                        <p>Advanced training in physics and mathematics education</p>
+                        <div class="timeline-year">May 2022 - Sep 2023</div>
+                        <h3>Online Tutor</h3>
+                        <p>Tutopedia: Math & Science Tuition / Enrichment School • Freelance</p>
+                        <p>Singapore • Remote (1 year 5 months)</p>
+                        <p>Specialized in Calculus, Time Management and student development</p>
                     </div>
                 </div>
                 <div class="timeline-item timeline-right">
                     <div class="timeline-content">
-                        <div class="timeline-year">Student Success</div>
-                        <h3>Exceptional Results</h3>
-                        <p>90% of my students achieve scores of 5 in AP exams</p>
-                        <p>Average IB score improvement of 2-3 points</p>
+                        <div class="timeline-year">Feb 2021 - Jul 2022</div>
+                        <h3>Online Physics Faculty</h3>
+                        <p>Avanti Learning Centres • Full-time (1 year 6 months)</p>
+                        <p>Teaching JEE Physics, Calculus and advanced physics concepts</p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
+                <div class="timeline-item timeline-left">
+                    <div class="timeline-content">
+                        <div class="timeline-year">Jul 2019 - Feb 2021</div>
+                        <h3>Physics Faculty</h3>
+                        <p>T.I.M.E. (Triumphant Institute of Management Education)</p>
+                        <p>(1 year 8 months)</p>
+                        <p>Expertise in JEE Physics, Time Management and student mentoring</p>
+                    </div>
+                </div>
     
     <section>
         <div class="container">
