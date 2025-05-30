@@ -1,0 +1,24 @@
+{
+  "rewrites": [
+    {
+      "source": "/Contact",
+      "destination": "/contact.html"
+    },
+    {
+      "source": "/About", 
+      "destination": "/about.html"
+    },
+    {
+      "source": "/Courses",
+      "destination": "/courses.html"
+    },
+    {
+      "source": "/Testimonials",
+      "destination": "/testimonials.html"
+    },
+    {
+      "source": "/admin",
+      "destination": "/admin/index.html"
+    }
+  ]
+}
