@@ -19,10 +19,10 @@
     {
       "source": "/admin",
       "destination": "/admin/index.html"
-    }
+    },
      {
       "source": "/privacy",
       "destination": "/privacy.html"
-    },
+    }
   ]
 }
