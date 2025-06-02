@@ -3,602 +3,245 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard | Tangible Learning</title>
+    <title>Admin Login | Tangible Learning</title>
     <link rel="stylesheet" href="../css/styles.css" />
     <style>
-        * {
+        .admin-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 20px;
+        }
+
+        .login-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .login-header {
+            margin-bottom: 2rem;
+        }
+
+        .login-header h1 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 2rem;
+        }
+
+        .login-header p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e1e8ed;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
             box-sizing: border-box;
         }
 
-        body {
-            margin: 0;
-            background-color: #f8f9fa;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.1);
         }
 
-        .dashboard-container {
-            display: flex;
-            min-height: 100vh;
-        }
-
-        /* Sidebar */
-        .sidebar {
-            width: 250px;
+        .login-btn {
+            width: 100%;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
-            padding: 0;
-            position: fixed;
-            height: 100vh;
-            overflow-y: auto;
-        }
-
-        .sidebar-header {
-            padding: 2rem 1.5rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .sidebar-header h2 {
-            margin: 0;
-            font-size: 1.3rem;
-        }
-
-        .sidebar-nav {
-            padding: 1rem 0;
-        }
-
-        .nav-item {
-            padding: 1rem 1.5rem;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            border-left: 3px solid transparent;
-        }
-
-        .nav-item:hover, .nav-item.active {
-            background-color: rgba(255,255,255,0.1);
-            border-left-color: white;
-        }
-
-        .nav-item i {
-            margin-right: 10px;
-            width: 20px;
-        }
-
-        /* Main Content */
-        .main-content {
-            flex: 1;
-            margin-left: 250px;
-            padding: 2rem;
-        }
-
-        .dashboard-header {
-            background: white;
-            padding: 1.5rem 2rem;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .dashboard-title h1 {
-            margin: 0;
-            color: var(--primary);
-            font-size: 1.8rem;
-        }
-
-        .dashboard-title p {
-            margin: 0.5rem 0 0 0;
-            color: #666;
-        }
-
-        .admin-info {
-            text-align: right;
-            color: #666;
-        }
-
-        .logout-btn {
-            background: var(--accent);
-            color: white;
+            padding: 14px;
             border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
             cursor: pointer;
-            margin-top: 0.5rem;
-            transition: background-color 0.3s;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
         }
 
-        .logout-btn:hover {
-            background: #d90057;
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(58, 134, 255, 0.3);
         }
 
-        /* Stats Cards */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
+        .login-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
         }
 
-        .stat-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            text-align: center;
+        .alert {
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
         }
 
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
+        .alert-error {
+            background-color: #fee2e2;
+            color: #dc2626;
+            border: 1px solid #fecaca;
         }
 
-        .stat-label {
+        .alert-success {
+            background-color: #d1fae5;
+            color: #065f46;
+            border: 1px solid #a7f3d0;
+        }
+
+        .footer-note {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e1e8ed;
             color: #666;
             font-size: 0.9rem;
-        }
-
-        .stat-card.total .stat-number { color: var(--primary); }
-        .stat-card.new .stat-number { color: #f59e0b; }
-        .stat-card.replied .stat-number { color: #10b981; }
-        .stat-card.today .stat-number { color: var(--secondary); }
-
-        /* Contacts Table */
-        .contacts-section {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-
-        .section-header {
-            padding: 1.5rem 2rem;
-            border-bottom: 1px solid #e1e8ed;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .section-title {
-            margin: 0;
-            color: var(--primary);
-            font-size: 1.3rem;
-        }
-
-        .filter-controls {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .filter-select {
-            padding: 0.5rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 0.9rem;
-        }
-
-        .contacts-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .contacts-table th,
-        .contacts-table td {
-            padding: 1rem;
-            text-align: left;
-            border-bottom: 1px solid #e1e8ed;
-        }
-
-        .contacts-table th {
-            background-color: #f8f9fa;
-            font-weight: 600;
-            color: var(--dark);
-        }
-
-        .contacts-table tr:hover {
-            background-color: #f8f9fa;
-        }
-
-        .status-badge {
-            padding: 0.25rem 0.75rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        .status-new { background: #fef3cd; color: #856404; }
-        .status-read { background: #cff4fc; color: #055160; }
-        .status-replied { background: #d1e7dd; color: #0f5132; }
-        .status-resolved { background: #e2e3e5; color: #41464b; }
-
-        .action-btn {
-            padding: 0.25rem 0.5rem;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-            font-size: 0.8rem;
-            margin-right: 0.25rem;
-            transition: opacity 0.3s;
-        }
-
-        .action-btn:hover {
-            opacity: 0.8;
-        }
-
-        .btn-view { background: var(--primary); color: white; }
-        .btn-reply { background: var(--success); color: white; }
-        .btn-delete { background: var(--accent); color: white; }
-
-        /* Loading State */
-        .loading {
-            text-align: center;
-            padding: 2rem;
-            color: #666;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .sidebar {
-                transform: translateX(-100%);
-                transition: transform 0.3s;
-            }
-
-            .sidebar.open {
-                transform: translateX(0);
-            }
-
-            .main-content {
-                margin-left: 0;
-                padding: 1rem;
-            }
-
-            .dashboard-header {
-                flex-direction: column;
-                text-align: center;
-                gap: 1rem;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .filter-controls {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-
-            .contacts-table {
-                font-size: 0.9rem;
-            }
-
-            .contacts-table th,
-            .contacts-table td {
-                padding: 0.5rem;
-            }
-        }
-
-        .no-contacts {
-            text-align: center;
-            padding: 3rem;
-            color: #666;
-        }
-
-        .refresh-btn {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .refresh-btn:hover {
-            background: #2563eb;
         }
     </style>
 </head>
 <body>
-    <div class="dashboard-container">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                <h2>📊 Admin Panel</h2>
-            </div>
-            <nav class="sidebar-nav">
-                <div class="nav-item active" onclick="showSection('dashboard')">
-                    📈 Dashboard
-                </div>
-                <div class="nav-item" onclick="showSection('contacts')">
-                    📧 All Contacts
-                </div>
-                <div class="nav-item" onclick="showSection('new')">
-                    🆕 New Messages
-                </div>
-                <div class="nav-item" onclick="showSection('settings')">
-                    ⚙️ Settings
-                </div>
-            </nav>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="main-content">
-            <!-- Header -->
-            <header class="dashboard-header">
-                <div class="dashboard-title">
-                    <h1>Welcome back!</h1>
-                    <p>Manage your Tangible Learning contact submissions</p>
-                </div>
-                <div class="admin-info">
-                    <div id="adminName">Loading...</div>
-                    <button class="logout-btn" onclick="logout()">Logout</button>
-                </div>
-            </header>
-
-            <!-- Stats Cards -->
-            <div class="stats-grid">
-                <div class="stat-card total">
-                    <div class="stat-number" id="totalContacts">-</div>
-                    <div class="stat-label">Total Contacts</div>
-                </div>
-                <div class="stat-card new">
-                    <div class="stat-number" id="newContacts">-</div>
-                    <div class="stat-label">New Messages</div>
-                </div>
-                <div class="stat-card replied">
-                    <div class="stat-number" id="repliedContacts">-</div>
-                    <div class="stat-label">Replied</div>
-                </div>
-                <div class="stat-card today">
-                    <div class="stat-number" id="todayContacts">-</div>
-                    <div class="stat-label">Today</div>
-                </div>
+    <div class="admin-container">
+        <div class="login-card">
+            <div class="login-header">
+                <h1>Admin Login</h1>
+                <p>Access your Tangible Learning dashboard</p>
             </div>
 
-            <!-- Contacts Section -->
-            <section class="contacts-section">
-                <div class="section-header">
-                    <h2 class="section-title">Recent Contact Submissions</h2>
-                    <div class="filter-controls">
-                        <select class="filter-select" id="statusFilter" onchange="filterContacts()">
-                            <option value="">All Status</option>
-                            <option value="new">New</option>
-                            <option value="read">Read</option>
-                            <option value="replied">Replied</option>
-                            <option value="resolved">Resolved</option>
-                        </select>
-                        <button class="refresh-btn" onclick="loadContacts()">🔄 Refresh</button>
-                    </div>
+            <div id="alertContainer" class="alert"></div>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Username or Email</label>
+                    <input type="text" id="username" name="username" class="form-control" required>
                 </div>
-                
-                <div id="contactsContainer">
-                    <div class="loading">Loading contacts...</div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" class="form-control" required>
                 </div>
-            </section>
-        </main>
+
+                <button type="submit" class="login-btn" id="loginBtn">
+                    Sign In
+                </button>
+            </form>
+
+            <div class="footer-note">
+                <p>Default credentials:</p>
+                <p><strong>Username:</strong> superadmin</p>
+                <p><strong>Password:</strong> admin123456</p>
+            </div>
+        </div>
     </div>
 
     <script>
         const API_BASE = 'http://localhost:5000';
-        let allContacts = [];
-        let adminInfo = null;
 
-        // Check authentication on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            checkAuth();
-            loadDashboardData();
-        });
+        function showAlert(message, type = 'error') {
+            const alertContainer = document.getElementById('alertContainer');
+            alertContainer.className = `alert alert-${type}`;
+            alertContainer.textContent = message;
+            alertContainer.style.display = 'block';
+            
+            setTimeout(() => {
+                alertContainer.style.display = 'none';
+            }, 5000);
+        }
 
-        function checkAuth() {
-            const token = localStorage.getItem('adminToken');
-            const storedAdminInfo = localStorage.getItem('adminInfo');
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+            const loginBtn = document.getElementById('loginBtn');
 
-            if (!token || !storedAdminInfo) {
-                window.location.href = 'index.html';
+            if (!username || !password) {
+                showAlert('Please enter both username and password.');
                 return;
             }
 
-            adminInfo = JSON.parse(storedAdminInfo);
-            document.getElementById('adminName').textContent = `${adminInfo.fullName || adminInfo.username} (${adminInfo.role})`;
-        }
-
-        async function apiRequest(endpoint, options = {}) {
-            const token = localStorage.getItem('adminToken');
-            
-            const response = await fetch(`${API_BASE}${endpoint}`, {
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                    'Content-Type': 'application/json',
-                    ...options.headers
-                },
-                ...options
-            });
-
-            if (response.status === 401) {
-                logout();
-                return;
-            }
-
-            return response.json();
-        }
-
-        async function loadDashboardData() {
-            try {
-                // Load contacts for statistics and table
-                await loadContacts();
-                
-                // Calculate statistics
-                const totalContacts = allContacts.length;
-                const newContacts = allContacts.filter(c => c.status === 'new').length;
-                const repliedContacts = allContacts.filter(c => c.status === 'replied').length;
-                
-                // Today's contacts
-                const today = new Date().toDateString();
-                const todayContacts = allContacts.filter(c => 
-                    new Date(c.createdAt).toDateString() === today
-                ).length;
-
-                // Update stats
-                document.getElementById('totalContacts').textContent = totalContacts;
-                document.getElementById('newContacts').textContent = newContacts;
-                document.getElementById('repliedContacts').textContent = repliedContacts;
-                document.getElementById('todayContacts').textContent = todayContacts;
-
-            } catch (error) {
-                console.error('Failed to load dashboard data:', error);
-                showError('Failed to load dashboard data');
-            }
-        }
-
-        async function loadContacts() {
-            try {
-                const result = await apiRequest('/api/contacts');
-                
-                if (result.success) {
-                    allContacts = result.data;
-                    displayContacts(allContacts);
-                } else {
-                    showError('Failed to load contacts');
-                }
-            } catch (error) {
-                console.error('Failed to load contacts:', error);
-                showError('Failed to load contacts');
-            }
-        }
-
-        function displayContacts(contacts) {
-            const container = document.getElementById('contactsContainer');
-            
-            if (contacts.length === 0) {
-                container.innerHTML = '<div class="no-contacts">No contacts found</div>';
-                return;
-            }
-
-            const tableHTML = `
-                <table class="contacts-table">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Subject</th>
-                            <th>Status</th>
-                            <th>Date</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${contacts.map(contact => `
-                            <tr>
-                                <td><strong>${contact.name}</strong></td>
-                                <td>${contact.email}</td>
-                                <td>${contact.subject || 'No subject'}</td>
-                                <td><span class="status-badge status-${contact.status}">${contact.status}</span></td>
-                                <td>${new Date(contact.createdAt).toLocaleDateString()}</td>
-                                <td>
-                                    <button class="action-btn btn-view" onclick="viewContact('${contact._id}')">View</button>
-                                    <button class="action-btn btn-reply" onclick="replyToContact('${contact._id}')">Reply</button>
-                                    <button class="action-btn btn-delete" onclick="deleteContact('${contact._id}')">Delete</button>
-                                </td>
-                            </tr>
-                        `).join('')}
-                    </tbody>
-                </table>
-            `;
-
-            container.innerHTML = tableHTML;
-        }
-
-        function filterContacts() {
-            const statusFilter = document.getElementById('statusFilter').value;
-            
-            let filteredContacts = allContacts;
-            
-            if (statusFilter) {
-                filteredContacts = allContacts.filter(contact => contact.status === statusFilter);
-            }
-            
-            displayContacts(filteredContacts);
-        }
-
-        function viewContact(contactId) {
-            const contact = allContacts.find(c => c._id === contactId);
-            if (!contact) return;
-
-            alert(`
-Contact Details:
-=================
-Name: ${contact.name}
-Email: ${contact.email}
-Phone: ${contact.phone || 'Not provided'}
-Subject: ${contact.subject || 'No subject'}
-Status: ${contact.status}
-Created: ${new Date(contact.createdAt).toLocaleString()}
-
-Message:
-${contact.message}
-            `);
-        }
-
-        function replyToContact(contactId) {
-            const contact = allContacts.find(c => c._id === contactId);
-            if (!contact) return;
-
-            const subject = prompt('Reply Subject:', `Re: ${contact.subject || 'Your inquiry'}`);
-            if (!subject) return;
-
-            const message = prompt('Reply Message:', `Hello ${contact.name},\n\nThank you for your inquiry.\n\nBest regards,\nTangible Learning Team`);
-            if (!message) return;
-
-            // Here you would normally send the reply via API
-            alert('Reply functionality will be implemented in the next step!');
-        }
-
-        async function deleteContact(contactId) {
-            if (!confirm('Are you sure you want to delete this contact?')) return;
+            // Show loading state
+            const originalText = loginBtn.textContent;
+            loginBtn.textContent = 'Signing in...';
+            loginBtn.disabled = true;
 
             try {
-                const result = await apiRequest(`/api/admin/contacts/${contactId}`, {
-                    method: 'DELETE'
+                const response = await fetch(`${API_BASE}/api/auth/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ username, password })
                 });
 
+                const result = await response.json();
+
                 if (result.success) {
-                    alert('Contact deleted successfully');
-                    loadContacts(); // Refresh the list
+                    // Store the token
+                    localStorage.setItem('adminToken', result.token);
+                    localStorage.setItem('adminInfo', JSON.stringify(result.admin));
+                    
+                    showAlert('Login successful! Redirecting...', 'success');
+                    
+                    // Redirect to dashboard
+                    setTimeout(() => {
+                        window.location.href = 'dashboard.html';
+                    }, 1000);
                 } else {
-                    alert('Failed to delete contact');
+                    showAlert(result.message || 'Login failed. Please try again.');
                 }
+
             } catch (error) {
-                console.error('Delete error:', error);
-                alert('Failed to delete contact');
+                console.error('Login error:', error);
+                showAlert('Network error. Please check your connection and try again.');
+            } finally {
+                // Restore button state
+                loginBtn.textContent = originalText;
+                loginBtn.disabled = false;
             }
-        }
+        });
 
-        function showSection(section) {
-            // Update active nav item
-            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
-            event.target.classList.add('active');
-            
-            // For now, just reload the same data
-            if (section === 'new') {
-                document.getElementById('statusFilter').value = 'new';
-                filterContacts();
-            } else {
-                document.getElementById('statusFilter').value = '';
-                filterContacts();
-            }
-        }
-
-        function showError(message) {
-            alert(`Error: ${message}`);
-        }
-
-        function logout() {
-            localStorage.removeItem('adminToken');
-            localStorage.removeItem('adminInfo');
-            window.location.href = 'index.html';
+        // Check if already logged in
+        const token = localStorage.getItem('adminToken');
+        if (token) {
+            // Verify token is still valid
+            fetch(`${API_BASE}/api/auth/me`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    window.location.href = 'dashboard.html';
+                }
+            })
+            .catch(() => {
+                // Token invalid, remove it
+                localStorage.removeItem('adminToken');
+                localStorage.removeItem('adminInfo');
+            });
         }
     </script>
 </body>
