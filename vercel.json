@@ -20,6 +20,10 @@
       "source": "/admin",
       "destination": "/admin.html"
     },
+    {
+      "source": "/admin_dashboard",
+      "destination": "/admin_dashboard.html"
+    },
      {
       "source": "/privacy",
       "destination": "/privacy.html"
