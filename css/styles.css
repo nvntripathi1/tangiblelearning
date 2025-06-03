@@ -286,6 +286,26 @@ footer {
     text-decoration: none;
 }
 
+.checkbox-item input[type="checkbox"] {
+    margin-right: 12px;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary);
+    cursor: pointer; /* Add this */
+}
+
+.radio-item input[type="radio"] {
+    margin-right: 10px;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary);
+    cursor: pointer; /* Add this */
+}
+
+.service-icon, .user-icon, .form-label {
+    pointer-events: none; /* Add this to prevent interference */
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .nav-links {
