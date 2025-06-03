@@ -21,7 +21,7 @@
       "destination": "/admin.html"
     },
     {
-      "source": "/admin_dashboard",
+      "source": "/dashboard.html",
       "destination": "/admin_dashboard.html"
     },
      {
