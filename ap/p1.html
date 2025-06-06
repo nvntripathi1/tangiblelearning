@@ -419,6 +419,97 @@
             .floating-icon:nth-child(5) {
                 font-size: 1.8rem;
             }
+
+            .pricing-container {
+                margin: 40px 0;
+            }
+            
+            .pricing-tabs {
+                display: flex;
+                justify-content: center;
+                margin-bottom: 30px;
+                border-radius: 50px;
+                background-color: #f8f9fa;
+                padding: 4px;
+                max-width: 400px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .pricing-tab {
+                flex: 1;
+                padding: 12px 20px;
+                text-align: center;
+                border: none;
+                background: none;
+                cursor: pointer;
+                border-radius: 46px;
+                font-weight: 600;
+                transition: all 0.3s ease;
+                color: #666;
+            }
+            
+            .pricing-tab.active {
+                background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 25%, #7c3aed 50%, #c026d3 75%, #db2777 100%);
+                color: white;
+                box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+            }
+            
+            .pricing-tab:hover:not(.active) {
+                background-color: #e9ecef;
+            }
+            
+            .pricing-content {
+                display: none;
+                background-color: #f8f9fa;
+                border-radius: 12px;
+                padding: 40px;
+                text-align: center;
+                box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            }
+            
+            .pricing-content.active {
+                display: block;
+                animation: fadeInUp 0.5s ease-out;
+            }
+            
+            .pricing-content h3 {
+                margin-bottom: 20px;
+                color: #1e3a8a;
+                font-size: 1.8rem;
+            }
+            
+            .payment-options {
+                background-color: white;
+                border-radius: 8px;
+                padding: 20px;
+                margin: 20px 0;
+                border-left: 4px solid #c026d3;
+            }
+            
+            .payment-options p {
+                margin: 0;
+                font-size: 0.95rem;
+                color: #555;
+            }
+            
+            .currency-note {
+                font-size: 0.85rem;
+                color: #888;
+                margin-top: 15px;
+                font-style: italic;
+            }
+            
+            .highlight-badge {
+                display: inline-block;
+                background: linear-gradient(135deg, #c026d3, #db2777);
+                color: white;
+                padding: 4px 12px;
+                border-radius: 20px;
+                font-size: 0.8rem;
+                font-weight: 600;
+                margin-bottom: 10px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -648,16 +739,42 @@
                     </li>
                 </ul>
                 
-                <div class="pricing-box">
-                    <h3>Course Investment</h3>
-                    <div class="price">$1,300</div>
-                    <p class="price-description">Complete 50-hour AP Physics 1 course with all materials and resources included</p>
-                    <p style="font-size: 0.9rem; margin-bottom: 20px;">
-                        <strong>Payment Options:</strong> Full payment or 3 monthly installments of $434<br>
-                        <strong>Includes:</strong> All sessions, recorded materials, practice tests, WhatsApp support, and exam prep resources
-                    </p>
-                    <a href="../contact" class="btn">Enroll Now</a>
-                </div>
+<div class="pricing-container">
+    <div class="pricing-tabs">
+        <button class="pricing-tab active" onclick="showPricing('international')">International Students</button>
+        <button class="pricing-tab" onclick="showPricing('indian')">Indian Students</button>
+    </div>
+    
+    <div id="international-pricing" class="pricing-content active">
+        <div class="highlight-badge">🌍 International</div>
+        <h3>Course Investment</h3>
+        <div class="price">$1250</div>
+        <p class="price-description">Complete 50-hour AP Physics 1 course with all materials and resources included</p>
+        
+        <div class="payment-options">
+            <p><strong>💳 Payment Options:</strong> Full payment or 3 monthly installments of $417</p>
+            <p><strong>📚 Includes:</strong> All sessions, recorded materials, practice tests, WhatsApp support, and exam prep resources</p>
+        </div>
+        
+        <a href="../contact" class="btn">Enroll Now</a>
+        <p class="currency-note">Prices in USD. Payment accepted via international payment methods.</p>
+    </div>
+    
+    <div id="indian-pricing" class="pricing-content">
+        <div class="highlight-badge">🇮🇳 Indian Students</div>
+        <h3>Course Investment</h3>
+        <div class="price">₹95,000</div>
+        <p class="price-description">Complete 50-hour AP Physics 1 course with all materials and resources included</p>
+        
+        <div class="payment-options">
+            <p><strong>💳 Payment Options:</strong> Full payment or 3 monthly installments of ₹31,700</p>
+            <p><strong>📚 Includes:</strong> All sessions, recorded materials, practice tests, WhatsApp support, and exam prep resources</p>
+        </div>
+        
+        <a href="../contact" class="btn">Enroll Now</a>
+        <p class="currency-note">Prices in INR. Payment accepted via UPI, Net Banking, or Bank Transfer.</p>
+    </div>
+</div>
                 
                 <h3 class="section-title">Student Success Story</h3>
                 <div class="testimonial">
@@ -690,5 +807,24 @@
             </ul>
         </div>
     </footer>
+<script>
+function showPricing(type) {
+    // Hide all pricing content
+    const allContent = document.querySelectorAll('.pricing-content');
+    const allTabs = document.querySelectorAll('.pricing-tab');
+    
+    allContent.forEach(content => {
+        content.classList.remove('active');
+    });
+    
+    allTabs.forEach(tab => {
+        tab.classList.remove('active');
+    });
+    
+    // Show selected pricing content
+    document.getElementById(type + '-pricing').classList.add('active');
+    event.target.classList.add('active');
+}
+</script>
 </body>
 </html>
