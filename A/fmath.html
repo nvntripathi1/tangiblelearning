@@ -233,59 +233,6 @@
             line-height: 1.5;
         }
         
-        .pricing-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
-        }
-        
-        .pricing-box {
-            background-color: var(--secondary-light);
-            border-radius: 8px;
-            padding: 30px;
-            text-align: center;
-            position: relative;
-            border: 2px solid transparent;
-            transition: all 0.3s ease;
-        }
-        
-        .pricing-box:hover {
-            border-color: var(--primary);
-            transform: translateY(-5px);
-        }
-        
-        .pricing-box.recommended {
-            border-color: var(--primary);
-            background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
-        }
-        
-        .recommended-badge {
-            background-color: var(--primary);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .price {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin: 15px 0;
-        }
-        
-        .price-description {
-            margin-bottom: 20px;
-            font-size: 0.9rem;
-            color: #666;
-        }
-        
         .benefits-list {
             margin: 30px 0;
             padding-left: 20px;
@@ -437,6 +384,234 @@
             content: "⚠️";
             font-size: 1.2em;
         }
+                /* Currency Toggle Buttons */
+        .currency-toggle {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            gap: 0;
+            background: white;
+            border-radius: 50px;
+            padding: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .currency-btn {
+            flex: 1;
+            padding: 12px 24px;
+            border: none;
+            background: transparent;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            color: var(--primary);
+        }
+
+        .currency-btn.active {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: 0 4px 12px rgba(58, 134, 255, 0.3);
+        }
+
+        .currency-btn:hover:not(.active) {
+            background: rgba(58, 134, 255, 0.1);
+        }
+
+        /* Course Investment Section */
+        .course-investment {
+            margin: 40px 0;
+        }
+
+        .course-investment h2 {
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        /* Pricing Cards Container */
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+            align-items: stretch; /* This ensures equal heights */
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            position: relative;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            display: flex; /* Make it a flex container */
+            flex-direction: column; /* Stack content vertically */
+            min-height: 400px; /* Set minimum height for consistency */
+        }
+        
+        .pricing-card.popular {
+            border: 2px solid var(--primary);
+        }
+
+        .pricing-card.popular::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+            z-index: 10;
+        }
+        /* Ensure both cards have the same content structure */
+        .pricing-card .track-details {
+            min-height: 120px; /* Ensures consistent content area height */
+            margin: 20px 0;
+        }
+
+        .track-title {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 20px;
+            margin-top: 15px;
+        }
+
+        .track-price {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 15px;
+            transition: opacity 0.3s ease;
+        }
+
+        .track-price.fade {
+            opacity: 0.3;
+        }
+
+        .currency-symbol {
+            font-size: 2rem;
+            vertical-align: top;
+        }
+
+        .track-duration {
+            text-align: center;
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+
+        .track-details {
+            margin: 20px 0;
+        }
+
+        .track-details p {
+            margin: 10px 0;
+            color: var(--dark);
+            font-size: 0.95rem;
+        }
+
+        .track-details strong {
+            color: var(--primary);
+        }
+
+        .perfect-for {
+        background: rgba(58, 134, 255, 0.05);
+        border-radius: 8px;
+        padding: 15px;
+        margin: 20px 0;
+        border-left: 4px solid var(--primary);
+        margin-top: auto; /* Push this to the bottom of the flex container */
+        }
+
+        .perfect-for strong {
+            color: var(--primary);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .track-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--accent), #ff4081);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            display: block;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 0, 110, 0.3);
+            margin-top: 20px;
+            align-self: flex-end;
+        }
+
+        .track-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 0, 110, 0.4);
+        }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+        .pricing-cards {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        .pricing-card {
+            min-height: auto; /* Remove fixed height on mobile */
+        }
+        
+        .currency-toggle {
+            max-width: 300px;
+        }
+        
+        .currency-btn {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+        }
+        
+        .track-price {
+            font-size: 2rem;
+        }
+        
+        .currency-symbol {
+            font-size: 1.5rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .track-price {
+            font-size: 1.8rem;
+        }
+        
+        .currency-symbol {
+            font-size: 1.3rem;
+        }
+        
+        .pricing-card.popular::before {
+            font-size: 0.75rem;
+            padding: 6px 16px;
+        }
+    }
     </style>
 </head>
 <body style="background-color: #f8f9fa;">
@@ -635,30 +810,64 @@
                     </li>
                 </ul>
                 
-                <h3 class="section-title">Course Investment</h3>
-                <div class="pricing-options">
-                    <div class="pricing-box">
-                        <h3>Standard Track</h3>
-                        <div class="price">$5,950</div>
-                        <p class="price-description">2.5 hours/week • 175 total hours over 70 weeks</p>
-                        <p style="font-size: 0.9rem; margin-bottom: 20px;">
-                            <strong>Payment Options:</strong> Full payment or 4 installments of $1,487.50<br>
-                            <strong>Perfect for:</strong> Students balancing Further Maths with other demanding A Levels
-                        </p>
-                        <a href="../contact.html" class="btn">Choose Standard Track</a>
-                    </div>
-                    <div class="pricing-box recommended">
-                        <div class="recommended-badge">Elite Choice</div>
-                        <h3>Intensive Track</h3>
-                        <div class="price">$6,720</div>
-                        <p class="price-description">3 hours/week • 168 total hours over 56 weeks</p>
-                        <p style="font-size: 0.9rem; margin-bottom: 20px;">
-                            <strong>Payment Options:</strong> Full payment or 4 installments of $1,680<br>
-                            <strong>Perfect for:</strong> Students completely committed to mathematical excellence
-                        </p>
-                        <a href="../contact.html" class="btn">Choose Intensive Track</a>
-                    </div>
+                <div class="course-investment">
+    <h2>Course Investment</h2>
+    
+    <!-- Currency Toggle -->
+    <div class="currency-toggle">
+        <button class="currency-btn active" id="usd-btn" onclick="switchCurrency('usd')">
+            🌍 International (USD)
+        </button>
+        <button class="currency-btn" id="inr-btn" onclick="switchCurrency('inr')">
+            🇮🇳 India (INR)
+        </button>
+    </div>
+
+    <!-- Pricing Cards -->
+    <div class="pricing-cards">
+        <!-- Standard Track -->
+        <div class="pricing-card">
+            <h3 class="track-title">Standard Track</h3>
+            
+            <div class="track-price" id="standard-price">
+                <span class="currency-symbol" id="standard-symbol">$</span><span id="standard-amount">3500</span>
+            </div>
+            
+            <p class="track-duration">2.5 hours/week • 175 total hours over 70 weeks</p>
+            
+            <div class="track-details">
+                <p><strong>Payment Options:</strong> <span id="standard-payment">Full payment or 3 installments of $1459</span></p>
+                
+                <div class="perfect-for">
+                    <strong>Perfect for:</strong> Students seeking steady, consistent progress
                 </div>
+            </div>
+            
+            <a href="../contact" class="track-btn">Choose Standard Track</a>
+        </div>
+
+        <!-- Intensive Track -->
+        <div class="pricing-card popular">
+            <h3 class="track-title">Intensive Track</h3>
+            
+            <div class="track-price" id="intensive-price">
+                <span class="currency-symbol" id="intensive-symbol">$</span><span id="intensive-amount">4900</span>
+            </div>
+            
+            <p class="track-duration">3 hours/week • 168 total hours over 56 weeks</p>
+            
+            <div class="track-details">
+                <p><strong>Payment Options:</strong> <span id="intensive-payment">Full payment or 3 installments of $1640</span></p>
+                
+                <div class="perfect-for">
+                    <strong>Perfect for:</strong> Students wanting intensive coverage + extra practice
+                </div>
+            </div>
+            
+            <a href="../contact" class="track-btn">Choose Intensive Track</a>
+        </div>
+    </div>
+</div>
                 <p style="text-align: center; font-size: 0.9rem; color: #666; margin-top: 20px;">
                     <strong>Both tracks include:</strong> All sessions, recorded materials, advanced problem sets, regular assessments, expert support, and elite university preparation guidance
                 </p>
@@ -694,5 +903,74 @@
             </ul>
         </div>
     </footer>
+    <script>
+// Pricing data for both currencies and both tracks
+const trackPricingData = {
+    usd: {
+        symbol: '$',
+        standard: {
+            price: '4375',
+            installment: '$1459',
+            paymentText: 'Full payment or 3 installments of $1459'
+        },
+        intensive: {
+            price: '4900',
+            installment: '$1640',
+            paymentText: 'Full payment or 3 installments of $1640'
+        }
+    },
+    inr: {
+        symbol: '₹',
+        standard: {
+            price: '332500',
+            installment: '₹110900',
+            paymentText: 'Full payment or 3 installments of ₹110900'
+        },
+        intensive: {
+            price: '344400',
+            installment: '₹114700',
+            paymentText: 'Full payment or 3 installments of ₹114700'
+        }
+    }
+};
+
+let currentTrackCurrency = 'usd';
+
+function switchCurrency(currency) {
+    if (currentTrackCurrency === currency) return;
+    
+    // Add fade effect to both price elements
+    const standardPrice = document.getElementById('standard-price');
+    const intensivePrice = document.getElementById('intensive-price');
+    
+    standardPrice.classList.add('fade');
+    intensivePrice.classList.add('fade');
+    
+    setTimeout(() => {
+        // Update button states
+        document.getElementById('usd-btn').classList.toggle('active', currency === 'usd');
+        document.getElementById('inr-btn').classList.toggle('active', currency === 'inr');
+        
+        // Update pricing content for both tracks
+        const data = trackPricingData[currency];
+        
+        // Standard Track
+        document.getElementById('standard-symbol').textContent = data.symbol;
+        document.getElementById('standard-amount').textContent = data.standard.price;
+        document.getElementById('standard-payment').textContent = data.standard.paymentText;
+        
+        // Intensive Track
+        document.getElementById('intensive-symbol').textContent = data.symbol;
+        document.getElementById('intensive-amount').textContent = data.intensive.price;
+        document.getElementById('intensive-payment').textContent = data.intensive.paymentText;
+        
+        currentTrackCurrency = currency;
+        
+        // Remove fade effect
+        standardPrice.classList.remove('fade');
+        intensivePrice.classList.remove('fade');
+    }, 150);
+}
+</script>
 </body>
 </html>
