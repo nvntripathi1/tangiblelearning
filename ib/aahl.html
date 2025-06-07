@@ -619,6 +619,7 @@
             gap: 30px;
             max-width: 1000px;
             margin: 0 auto;
+            align-items: start; /* This ensures equal heights */
         }
 
         .pricing-card {
@@ -629,24 +630,31 @@
             position: relative;
             transition: all 0.3s ease;
             border: 2px solid transparent;
+            height: fit-content; /* Ensures consistent height */
         }
-
+        
         .pricing-card.popular {
             border: 2px solid var(--primary);
-            transform: scale(1.05);
         }
 
         .pricing-card.popular::before {
             content: 'Most Popular';
             position: absolute;
             top: -12px;
-            right: 20px;
+            left: 50%;
+            transform: translateX(-50%);
             background: var(--primary);
             color: white;
             padding: 8px 20px;
             border-radius: 20px;
             font-size: 0.85rem;
             font-weight: 600;
+            white-space: nowrap;
+        }
+        /* Ensure both cards have the same content structure */
+        .pricing-card .track-details {
+            min-height: 120px; /* Ensures consistent content area height */
+            margin: 20px 0;
         }
 
         .track-title {
@@ -655,6 +663,7 @@
             font-weight: 700;
             color: var(--dark);
             margin-bottom: 20px;
+            margin-top: 15px;
         }
 
         .track-price {
@@ -741,7 +750,7 @@
             }
             
             .pricing-card.popular {
-                transform: none;
+                /* No transform on mobile either */
             }
             
             .currency-toggle {
@@ -769,6 +778,10 @@
             
             .currency-symbol {
                 font-size: 1.3rem;
+            }
+            .pricing-card.popular::before {
+                font-size: 0.75rem;
+                padding: 6px 16px;
             }
         }
     </style>
